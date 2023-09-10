@@ -1,5 +1,7 @@
-function AppLayout() {
-  return <div>App</div>;
+import styles from "./AppNav.module.css";
+
+function AppNav() {
+  return <nav className={styles.nav}>App navigation</nav>;
 }
 
-export default AppLayout;
+export default AppNav;
