@@ -8,6 +8,7 @@ import styles from "./Form.module.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { useURLPosition } from "../hooks/useURLPosition";
+import { useCities } from "../contexts/CitiesContext";
 import Message from "./Message";
 import Spinner from "./Spinner";
 
@@ -30,8 +31,9 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
   const [geocodingError, setGeocodingError] = useState("");
-
+  const { cities, isLoading } = useCities();
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
+  const [code, setCode] = useState(null);
 
   useEffect(() => {
     async function fetchCityData() {
@@ -43,6 +45,8 @@ function Form() {
         if (!data.countryCode) throw new Error("no country code");
         setCityName(data.city || data.locality || "");
         setCountry(data.countryName);
+        setCode(data.countryCode);
+        // console.log(data);
         setEmoji(convertToEmoji(data.countryCode));
       } catch (err) {
         setGeocodingError(err.message);
@@ -55,6 +59,19 @@ function Form() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(code);
+    const newCountry = {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes: "My favorite city so far!",
+      position: {
+        lat,
+        lng,
+      },
+      id: 1,
+    };
   }
 
   if (isLoadingGeocoding) return <Spinner />;

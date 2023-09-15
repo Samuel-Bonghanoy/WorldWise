@@ -42,6 +42,7 @@ function CitiesProvider({ children }) {
     <CitiesContext.Provider
       value={{
         cities,
+        setCities,
         isLoading,
         currentCity,
         getCity,
