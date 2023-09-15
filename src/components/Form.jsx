@@ -31,7 +31,7 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
   const [geocodingError, setGeocodingError] = useState("");
-  const { cities, isLoading } = useCities();
+  const { cities, setCities } = useCities();
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [code, setCode] = useState(null);
 
@@ -60,18 +60,22 @@ function Form() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(code);
-    const newCountry = {
+    const newCity = {
       cityName,
       country,
       emoji,
       date,
-      notes: "My favorite city so far!",
+      notes,
       position: {
         lat,
         lng,
       },
-      id: 1,
+      id: Math.floor(Math.random() * 10000000 + 1),
     };
+
+    setCities((cities) => [...cities, newCity]);
+
+    console.log(cities);
   }
 
   if (isLoadingGeocoding) return <Spinner />;
