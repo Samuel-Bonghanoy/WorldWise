@@ -6,6 +6,8 @@ import styles from "./Form.module.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { useURLPosition } from "../hooks/useURLPosition";
+import Message from "./Message";
+import Spinner from "./Spinner";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -24,6 +26,8 @@ function Form() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
+  const [emoji, setEmoji] = useState("");
+  const [geocodingError, setGeocodingError] = useState("");
 
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
 
@@ -31,13 +35,25 @@ function Form() {
     async function fetchCityData() {
       try {
         setIsLoadingGeocoding(true);
-        const res = await fetch;
+        const res = await fetch(`${BASE_URL}?latitude=${lat}&longitude=${lng}`);
+        const data = await res.json();
+
+        if (!data.countryCode) throw new Error("no country code");
+        setCityName(data.city || data.locality || "");
+        setCountry(data.countryName);
+        setEmoji(convertToEmoji(data.countryCode));
       } catch (err) {
+        setGeocodingError(err.message);
       } finally {
         setIsLoadingGeocoding(false);
       }
     }
-  }, []);
+    fetchCityData();
+  }, [lat, lng]);
+
+  if (isLoadingGeocoding) return <Spinner />;
+
+  if (geocodingError) return <Message message={geocodingError} />;
 
   return (
     <form className={styles.form}>
