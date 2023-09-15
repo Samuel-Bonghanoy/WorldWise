@@ -74,7 +74,8 @@ function Form() {
     };
 
     setCities((cities) => [...cities, newCity]);
-
+    setNotes("");
+    navigate(-1);
     console.log(cities);
   }
 

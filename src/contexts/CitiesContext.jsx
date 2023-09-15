@@ -25,16 +25,21 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
-  async function getCity(id) {
+  function getCity(id) {
     try {
       setIsLoading(true);
-      const res = await fetch(`${BASE_URL}/cities/${id}`);
-      const data = await res.json();
-      setCurrentCity(data);
+      // const res = await fetch(`${BASE_URL}/cities/${id}`);
+      const data = cities.filter((city) => {
+        console.log(city.id, "||", Number(id));
+        return city.id === Number(id);
+      });
+      setCurrentCity(data[0]);
+      // console.log(data);
     } catch {
       alert("There was an error lading data...");
     } finally {
       setIsLoading(false);
+      console.log(Number(id));
     }
   }
 
