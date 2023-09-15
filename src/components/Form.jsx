@@ -1,8 +1,9 @@
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
 import { useEffect, useState } from "react";
-import Datepicker from "react-datepicker";
-
+// import Datepicker from "react-datepicker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import styles from "./Form.module.css";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
@@ -81,7 +82,11 @@ function Form() {
           onChange={(e) => setDate(e.target.value)}
           value={date}
         /> */}
-        <DatePicker />
+        <DatePicker
+          className={styles["react-datepicker"]}
+          selected={date}
+          onChange={(date) => setDate(date)}
+        />
       </div>
 
       <div className={styles.row}>
