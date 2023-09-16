@@ -25,21 +25,39 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
-  function getCity(id) {
+  async function getCity(id) {
     try {
       setIsLoading(true);
-      // const res = await fetch(`${BASE_URL}/cities/${id}`);
-      const data = cities.filter((city) => {
-        console.log(city.id, "||", Number(id));
-        return city.id === Number(id);
-      });
-      setCurrentCity(data[0]);
+      const res = await fetch(`${BASE_URL}/cities/${id}`);
+      const data = await res.json();
+      setCurrentCity(data);
       // console.log(data);
     } catch {
       alert("There was an error lading data...");
     } finally {
       setIsLoading(false);
       console.log(Number(id));
+    }
+  }
+
+  async function createCity(newCity) {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`${BASE_URL}/cities`, {
+        method: "POST",
+        body: JSON.stringify(newCity),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await res.json();
+      console.log(data);
+      setCities((cities) => [...cities, data]);
+    } catch {
+      alert("There was an error lading data...");
+    } finally {
+      setIsLoading(false);
+      // console.log(Number(id));
     }
   }
 
@@ -51,6 +69,7 @@ function CitiesProvider({ children }) {
         isLoading,
         currentCity,
         getCity,
+        createCity,
       }}
     >
       {children}

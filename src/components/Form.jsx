@@ -31,7 +31,7 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
   const [geocodingError, setGeocodingError] = useState("");
-  const { cities, setCities } = useCities();
+  const { cities, setCities, createCity } = useCities();
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [code, setCode] = useState(null);
 
@@ -60,6 +60,9 @@ function Form() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(code);
+
+    if (!cityName || date) return;
+
     const newCity = {
       cityName,
       country,
@@ -72,7 +75,7 @@ function Form() {
       },
       id: Math.floor(Math.random() * 10000000 + 1),
     };
-
+    createCity(newCity);
     setCities((cities) => [...cities, newCity]);
     setNotes("");
     navigate(-1);
