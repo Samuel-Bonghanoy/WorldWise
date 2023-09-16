@@ -57,7 +57,7 @@ function Form() {
     fetchCityData();
   }, [lat, lng]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     console.log(code);
 
@@ -77,7 +77,7 @@ function Form() {
     };
     createCity(newCity);
     setNotes("");
-    navigate(-1);
+    navigate("/app/cities");
     // console.log(cities);
   }
 
