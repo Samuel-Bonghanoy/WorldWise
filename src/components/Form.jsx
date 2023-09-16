@@ -108,6 +108,7 @@ function Form() {
           className={styles["react-datepicker"]}
           selected={date}
           onChange={(date) => setDate(date)}
+          dateFormat={"dd/MM/yyyy"}
         />
       </div>
 
