@@ -51,10 +51,10 @@ function CitiesProvider({ children }) {
         },
       });
       const data = await res.json();
-      console.log(data);
+      console.log(data, "hiya im miya");
       setCities((cities) => [...cities, data]);
     } catch {
-      alert("There was an error lading data...");
+      alert("There was an error loading data...");
     } finally {
       setIsLoading(false);
       // console.log(Number(id));

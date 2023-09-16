@@ -61,7 +61,7 @@ function Form() {
     e.preventDefault();
     console.log(code);
 
-    if (!cityName || date) return;
+    if (!cityName || !date) return;
 
     const newCity = {
       cityName,
@@ -76,10 +76,9 @@ function Form() {
       id: Math.floor(Math.random() * 10000000 + 1),
     };
     createCity(newCity);
-    setCities((cities) => [...cities, newCity]);
     setNotes("");
     navigate(-1);
-    console.log(cities);
+    // console.log(cities);
   }
 
   if (isLoadingGeocoding) return <Spinner />;
