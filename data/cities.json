@@ -25,30 +25,6 @@
       "id": 17806751
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
-      "cityName": "Castello de la Plana",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2023-09-16T15:39:42.366Z",
-      "notes": "",
-      "position": {
-        "lat": "40.02603705467397",
-        "lng": "0.012016296386718752"
-      },
-      "id": 5546263
-    },
-    {
       "cityName": "Cebu City",
       "country": "Philippines (the)",
       "emoji": "🇵🇭",
@@ -59,6 +35,54 @@
         "lng": "123.88531208038331"
       },
       "id": 3163528
+    },
+    {
+      "cityName": "Lapu-Lapu City",
+      "country": "Philippines (the)",
+      "emoji": "🇵🇭",
+      "date": "2023-09-16T16:32:28.824Z",
+      "notes": "",
+      "position": {
+        "lat": "10.29299297059423",
+        "lng": "123.97684570182147"
+      },
+      "id": 162079
+    },
+    {
+      "cityName": "Singapore",
+      "country": "Singapore",
+      "emoji": "🇸🇬",
+      "date": "2023-09-16T16:33:11.483Z",
+      "notes": "",
+      "position": {
+        "lat": "1.2743089918452106",
+        "lng": "103.82629394531251"
+      },
+      "id": 8511159
+    },
+    {
+      "cityName": "Manila",
+      "country": "Philippines (the)",
+      "emoji": "🇵🇭",
+      "date": "2023-09-16T16:33:38.404Z",
+      "notes": "",
+      "position": {
+        "lat": "14.567634332576946",
+        "lng": "120.97595214843751"
+      },
+      "id": 3250079
+    },
+    {
+      "cityName": "Taiwan",
+      "country": "Taiwan (Province of China)",
+      "emoji": "🇹🇼",
+      "date": "2023-09-16T16:33:57.895Z",
+      "notes": "",
+      "position": {
+        "lat": "22.471954507739227",
+        "lng": "121.2451171875"
+      },
+      "id": 8047599
     }
   ]
 }
